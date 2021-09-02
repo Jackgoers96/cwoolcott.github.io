@@ -3,10 +3,9 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-const middleware = (req, res, nextABC) => {
-    console.log(`MIDDLEWARE ${req.method} ${req.path}`);
-    //nextABC();
-
+const middleware = (req, res, next) => {
+    console.log(`${req.method} ${req.path} at ${Date.now()}`);
+    next();
 }
 
 app.use(middleware);
@@ -32,5 +31,3 @@ require("./routes/htmlRoutes")(app);
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });
-
-

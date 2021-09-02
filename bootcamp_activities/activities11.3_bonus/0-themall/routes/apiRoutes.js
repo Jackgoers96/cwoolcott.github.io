@@ -23,6 +23,7 @@ module.exports = function (app) {
     //     status: "open"
     // };
 
+
     app.post("/api/storeupdate", function (req, res) {
 
         var storeUpdate = req.body;
@@ -40,6 +41,51 @@ module.exports = function (app) {
 
 
         res.json(true);
+
+
+    });
+
+    app.put("/api/stores", function (req, res) {
+
+        var storeUpdate = req.body;
+        //we need to get the correct object
+        for (var i = 0; i < storeData.length; i++) {
+            console.log(storeData[i].storeID, storeUpdate.storeID)
+            if (storeData[i].storeID == storeUpdate.storeID) {
+
+                storeData[i].storeName = storeUpdate.storeName;
+                storeData[i].storeDescription = storeUpdate.storeDescription;
+
+                //storeData[i].status = (storeData[i].status === 'open') ? 'closed' : 'open';
+                res.json(storeData[i]);
+                break; //Stop this loop, we found it!
+            }
+
+        }
+
+
+        // res.json(true);
+
+
+    });
+
+    app.get("/api/getstore/:storeID", function (req, res) {
+
+        const storeID = req.params.storeID;
+
+        for (var i = 0; i < storeData.length; i++) {
+
+            if (storeData[i].storeID == storeID) {
+
+                res.json(storeData[i]);
+                break; //Stop this loop, we found it!
+            }
+
+        }
+
+
+
+
 
 
     });

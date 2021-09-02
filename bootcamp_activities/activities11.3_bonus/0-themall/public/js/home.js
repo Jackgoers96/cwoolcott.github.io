@@ -37,7 +37,7 @@ function getStores() {
                         openCloseBtn.html(storeData[i].status);
 
                         var store = $("<div>");
-                        store.append("<h3>" + storeData[i].storeName + "</h3>");
+                        store.append(`<h3><a href="/store/${storeData[i].storeID}">${storeData[i].storeName}</a></h3>`);
                         store.append("<h4><i>" + storeData[i].storeDescription + "</i></h4>");
                         store.append(openCloseBtn);
                         store.append("<hr>");
