@@ -13,9 +13,10 @@ CREATE TABLE instructors (
 CREATE TABLE courses (
   id INT,
   course_title VARCHAR(30) NOT NULL,
-  instructor_id INT,
+  instructors_id INT,
   order_details TEXT,
-  FOREIGN KEY (instructor_id)
-  REFERENCES instructors(id)
-  ON DELETE SET NULL
+  FOREIGN KEY (instructors_id) REFERENCES instructors(id)
+  FOREIGN KEY (projector_id) REFERENCES projectors(id)
 );
+
+

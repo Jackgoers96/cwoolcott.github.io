@@ -14,12 +14,14 @@ CREATE TABLE courses (
 
 DROP TABLE IF EXISTS students;
 CREATE TABLE students (
-  id INT NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   active BOOLEAN NOT NULL,
   date_updated DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+INSERT INTO students (first_name, last_name, active) VALUES ("Bob", "Johnson", true)
 
 DROP TABLE IF EXISTS instructors;
 CREATE TABLE instructors (
