@@ -14,6 +14,6 @@ CREATE TABLE course_names (
   department INT,
   FOREIGN KEY (department)
   REFERENCES department(id)
-  ON DELETE SET NULL
+  ON DELETE CASCADE
 );
 
