@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meet me at the mall | Store</title>
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center" id="storeTitle">
+
+            </h1>
+            <hr>
+            <h2 class="text-center">Update Store</h2>
+            <br>
+            <div class="text-center">
+
+                <a href="/">
+                    <button class="btn btn-lg btn-secondary">
+                        Home </button>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+                        <form role="form">
+
+                            <div class="form-group">
+                                <label for="storeName">Store Name</label>
+                                <input type="text" class="form-control" id="storeName">
+                            </div>
+                            <div class="form-group">
+                                <label for="storeDescriptions">Store Description</label>
+                                <input type="text" class="form-control" id="storeDescription">
+                            </div>
+                            <button type="submit" class="btn btn-primary submit">Update Store</button>
+                            <button type="button" class="btn btn-danger deleteStore">Delete Store</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const storeID = window.location.pathname.replace("/store/", "");
+        console.log(storeID);
+
+
+        // status: "open"
+        // storeDescription: "Florist and Home Decor"
+        // storeID: 3
+        // storeName: "Florist Gump"
+        fetch('/api/getstore/' + storeID, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then((res) => res.json())
+            .then((store) => {
+                console.log("store", store);
+                $("#storeName").val(store.name);
+                $("#storeDescription").val(store.description);
+            });
+
+        $(".submit").on("click", function (event) {
+            event.preventDefault();
+
+            // Here we grab the form elements
+            var updatedStore = {
+                storeID: storeID,
+                storeName: $("#storeName").val().trim(),
+                storeDescription: $("#storeDescription").val().trim()
+                //,status: $("#status").val().trim()
+            };
+
+            fetch('/api/stores', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedStore),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log('Successful POST request:', data);
+                    window.location.replace("/store/" + storeID);
+
+                })
+                .catch((error) => {
+                    console.error('Error in POST request:', error);
+                });
+
+        });
+
+
+        $(".deleteStore").on("click", function (event) {
+            event.preventDefault();
+
+            // Here we grab the form elements
+            var deleteStore = {
+                storeID: storeID,
+            };
+
+            fetch('/api/stores', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(deleteStore),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log('Successful DELETE request:', data);
+                    window.location.replace("/home");
+                })
+                .catch((error) => {
+                    console.error('Error in DELETE request:', error);
+                });
+        });
+
+    </script>
+</body>
+
+</html>
