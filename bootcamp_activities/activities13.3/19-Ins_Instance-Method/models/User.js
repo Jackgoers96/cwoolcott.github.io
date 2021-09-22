@@ -11,6 +11,9 @@ class User extends Model {
       return false;
     }
   }
+  thisIsTrue() {
+    return true;
+  }
 }
 
 User.init(
@@ -49,7 +52,7 @@ User.init(
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
-      }, 
+      },
       beforeUpdate: async (updatedUserData) => {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;

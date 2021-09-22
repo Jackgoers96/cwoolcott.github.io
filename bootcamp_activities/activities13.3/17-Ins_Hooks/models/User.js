@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class User extends Model { }
 
 User.init(
   {
@@ -37,13 +37,15 @@ User.init(
       // Use the beforeCreate hook to work with data before a new instance is created
       beforeCreate: async (newUserData) => {
         // In this case, we are taking the user's email address, and making all letters lower case before adding it to the database.
+
         newUserData.email = await newUserData.email.toLowerCase();
-        return newUserData;
       },
       // Here, we use the beforeUpdate hook to make all of the characters lower case in an updated email address, before updating the database.
       beforeUpdate: async (updatedUserData) => {
+        console.log("username", updatedUserData.username);
+        console.log("email", updatedUserData.email);
+        console.log("password", updatedUserData.password);
         updatedUserData.email = await updatedUserData.email.toLowerCase();
-        return updatedUserData;
       },
     },
     sequelize,
