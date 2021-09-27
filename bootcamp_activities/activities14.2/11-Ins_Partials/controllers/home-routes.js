@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     );
 
     res.render('homepage', {
-      galleries,
+      galleries
     });
   } catch (err) {
     console.log(err);

@@ -4,4 +4,8 @@ module.exports = {
     // We use the 'toLocaleTimeString()' method to format the time as H:MM:SS AM/PM
     return date.toLocaleTimeString();
   },
+  greeting: (gallery_name) => {
+    const greet = `Welcome to the Gallery ${gallery_name}!!!!!`;
+    return greet;
+  }
 };

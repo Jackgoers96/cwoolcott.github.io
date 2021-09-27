@@ -4,6 +4,7 @@ const { User } = require('../../models');
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
+
     const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
@@ -12,8 +13,9 @@ router.post('/', async (req, res) => {
 
     // TODO: Set up sessions with the 'loggedIn' variable
     req.session.save(() => {
-      // TODO: Set the 'loggedIn' session variable to 'true'
 
+      // TODO: Set the 'loggedIn' session variable to 'true'
+      req.session.loggedIn = true;
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -48,7 +50,8 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      // TODO: Once the user successfully logs in, set up sessions with the 'loggedIn' variable
+
+      req.session.loggedIn = true;
 
       res
         .status(200)
@@ -67,6 +70,10 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
+    // req.session.save(() => {
+    //   req.session.loggedIn = false;
+    // })
+
   } else {
     res.status(404).end();
   }

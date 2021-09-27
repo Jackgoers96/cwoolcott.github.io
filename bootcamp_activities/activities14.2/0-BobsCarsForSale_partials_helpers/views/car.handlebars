@@ -1,0 +1,21 @@
+<div style="float:left">
+	{{#if image}}
+	<img src="/images/{{image}}" style="width:400px">
+	{{else}}
+	<h3>IMAGE NOT AVAILABLE</h3>
+	{{/if}}
+
+</div>
+<div style="float:left">
+	<h1 style="color:red; font-weight:bold">
+		{{#if sold}}
+		SOLD!!!!!
+		{{/if}}
+	</h1>
+	<h2><b>{{year}} {{make}} {{model}}</b></h2>
+	<h2>Price: ${{price}}</h2>
+	<button>Buy this {{model}}</button>
+	<br><br>
+	<button><a href="/carsforsale/">View All Cars</a></button>
+
+</div>
