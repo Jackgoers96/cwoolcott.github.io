@@ -15,13 +15,12 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethods", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { useNewUrlParser: true });
 
-app.post("/submit", ({ body }, res) => {
+app.post("/submit", ({body}, res) => {
   const user = new User(body);
-
-  // user.coolifier();
-  // user.makeCool();
+  user.setFullName();
+  user.lastUpdatedDate();
 
   User.create(user)
     .then(dbUser => {

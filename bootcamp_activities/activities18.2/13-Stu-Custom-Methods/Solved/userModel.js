@@ -3,6 +3,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  firstName: {
+    type: String,
+    trim: true,
+    required: "First Name is Required"
+  },
+
+  lastName: {
+    type: String,
+    trim: true,
+    required: "Last Name is Required"
+  },
+
   username: {
     type: String,
     trim: true,
@@ -27,23 +39,22 @@ const UserSchema = new Schema({
     default: Date.now
   },
 
-  isCool: {
-    type: Boolean,
-    default: false
-  }
+  lastUpdated: Date,
+
+  fullName: String
 });
 
-UserSchema.methods.coolifier = function () {
-  this.username = `${this.username}...the Coolest!`;
-  return this.username;
+UserSchema.methods.setFullName = function() {
+  this.fullName = `${this.firstName} ${this.lastName}`;
+
+  return this.fullName;
 };
 
-UserSchema.methods.makeCool = function () {
-  this.isCool = true;
-  return this.isCool;
+UserSchema.methods.lastUpdatedDate = function() {
+  this.lastUpdated = Date.now();
+
+  return this.lastUpdated;
 };
-
-
 
 const User = mongoose.model("User", UserSchema);
 

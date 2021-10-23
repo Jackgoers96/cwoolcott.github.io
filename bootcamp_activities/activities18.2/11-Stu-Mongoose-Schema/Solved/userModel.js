@@ -25,25 +25,8 @@ const UserSchema = new Schema({
   userCreated: {
     type: Date,
     default: Date.now
-  },
-
-  isCool: {
-    type: Boolean,
-    default: false
   }
 });
-
-UserSchema.methods.coolifier = function () {
-  this.username = `${this.username}...the Coolest!`;
-  return this.username;
-};
-
-UserSchema.methods.makeCool = function () {
-  this.isCool = true;
-  return this.isCool;
-};
-
-
 
 const User = mongoose.model("User", UserSchema);
 
