@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Creating Indexes</title>
-  </head>
 
-  <body>
-    <h1>Open Your Developer Tools > Application > IndexedDB</h1>
-    <script>
-      const request = window.indexedDB.open("toDoList", 1);
+<head>
+  <meta charset="utf-8" />
+  <title>Creating Indexes</title>
+</head>
 
-      request.onupgradeneeded = ({ target }) => {
-        const db = target.result;
+<body>
+  <h1>Open Your Developer Tools > Application > IndexedDB</h1>
+  <script>
+    const request = indexedDB.open("toDoList", 5);
 
-        const objectStore = db.createObjectStore("toDoList");
-        objectStore.createIndex("timestamp", "timestamp");
-      };
+    request.onupgradeneeded = ({ target }) => {
+      const db = target.result;
 
-      request.onsuccess = event => {
-        console.log(request.result);
-      };
-    </script>
-  </body>
+      const objectStore = db.createObjectStore("toDoList");
+      objectStore.createIndex("timestamp", "timestamp");
+      objectStore.createIndex("firstName", "firstName");
+    };
+
+    request.onsuccess = event => {
+      console.log(request.result);
+    };
+  </script>
+</body>
+
 </html>
