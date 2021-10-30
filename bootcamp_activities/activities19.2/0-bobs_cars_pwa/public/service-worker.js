@@ -2,6 +2,7 @@ const FILES_TO_CACHE = [
     "/",
     "/carsforsale/",
     "/css/style.css",
+    "/js/client.js",
     "/dist/js/client.min.js",
     "/images/bugatti.jpg",
     "/images/ferrari.jpg",
@@ -24,6 +25,7 @@ const DATA_CACHE_NAME = "data-cache-v6";
 
 // install
 self.addEventListener("install", function (evt) {
+    console.log("SW install")
     // pre cache image data
     // evt.waitUntil(
     //     caches.open(DATA_CACHE_NAME).then((cache) => cache.add("/api/images"))
@@ -41,6 +43,7 @@ self.addEventListener("install", function (evt) {
 
 // activate
 self.addEventListener("activate", function (evt) {
+    console.log("SW activate")
     evt.waitUntil(
         caches.keys().then(keyList => {
             return Promise.all(
@@ -59,6 +62,7 @@ self.addEventListener("activate", function (evt) {
 
 // fetch
 self.addEventListener('fetch', function (evt) {
+    console.log("SW fetch")
     if (evt.request.url.includes('/api/') || evt.request.url.includes('/carsforsale/')) {
         console.log("evt.request.url", evt.request.url)
         evt.respondWith(

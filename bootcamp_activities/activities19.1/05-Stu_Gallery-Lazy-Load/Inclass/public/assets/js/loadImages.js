@@ -16,10 +16,10 @@ function initLazyImages() {
     imageEntities.forEach(image => {
       // When intersects the viewpoint, executes code 
       if (image.isIntersecting) {
-        console.log("isIntersecting", image.target)
-        console.log(image.target.getAttribute('src'))
+        // console.log("isIntersecting", image.target)
+        // console.log(image.target.getAttribute('src'))
         // In view doesn't need to be observed
-        observer.observe(image.target);
+        observer.unobserve(image.target);
         // set the image source that has entered the viewport
         image.target.src = image.target.getAttribute('src');
       }

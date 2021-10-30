@@ -30,10 +30,16 @@ const themeChangeHandler = (event) => {
 
     fetch('/api/themeupdate/' + newColor, {
         method: 'GET',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
     }).then(function (response) {
-        //may not be a response / could write in header / could write cookie in client JS
-        location.reload();
+        //update in cookie and temporary here
+        document.querySelector('.container').style.backgroundColor = newColor;
+        document.querySelectorAll('.car').forEach(el => el.style.borderColor = newColor);
+        document.querySelector('.lowerContainer').style.backgroundColor = newColor;
+
+        //could write in header / could read cookie in client JS
+        //location.reload();
     });
 
 }
