@@ -1,0 +1,24 @@
+{
+  "name": "mongo_crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3",
+    "mongojs": "^2.6.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "build": "babel public -d public/babel"
+  },
+  "author": "",
+  "license": "ISC"
+}
