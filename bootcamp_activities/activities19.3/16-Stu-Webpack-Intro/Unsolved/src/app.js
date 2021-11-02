@@ -1,5 +1,3 @@
-const calculations = require("./calculations");
-
 const priceEl = document.getElementById("price");
 const balanceEl = document.getElementById("balance");
 const expenseEl = document.getElementById("expense");
@@ -14,16 +12,11 @@ function addToList(name, price) {
 
 function submit(e) {
   e.preventDefault();
-  const total = calculations.subtract(Number(balanceEl.innerText), priceEl.value);
-  balanceEl.innerText = total;
   addToList(expenseEl.value, priceEl.value);
 }
 
 function reset(e) {
   e.preventDefault();
-  const total = 2000;
-  balanceEl.innerText = total;
-  expensesListEl.innerHTML = "";
 }
 
 submitBtn.onclick = submit;

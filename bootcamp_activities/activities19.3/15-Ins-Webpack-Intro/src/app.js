@@ -1,1 +1,5 @@
-console.log("Hello webpack!");
+console.log("Hello webpack!!");
+
+const greeting = name => {
+    console.log("Hi! " + name);
+}
