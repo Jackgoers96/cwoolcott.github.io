@@ -1,12 +1,11 @@
 import React from 'react';
 
-// components are responsible for rendering content
+// TODO: Add a comment explaining what a react component is
 function HelloReact() {
   const text = 'some text';
-  let hiText = "Hello!";
 
   // TODO: Add a comment explaining what JSX is and the significance of the curly braces
-  return (<div>{hiText} World! here is {text}</div>);
+  return <p>Hello World! Here is {text}</p>;
 }
 
 export default HelloReact;
