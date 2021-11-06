@@ -10,12 +10,14 @@ Before you begin this activity, complete the following steps:
 
 3. Rename the `.env.example` file to `.env`.
 
-4. To make API requests, we need to use Axios. Make sure that it's installed by running `npm i axios`.
+4. To make API requests, we need to use Axios and Bootstrap. Make sure they are installed by running `npm i axios bootstrap`.
 
 5. This project uses Bootstrap, so don't forget to import it inside `index.js`:
 
-     `import 'bootstrap/dist/css/bootstrap.min.css'`
-   
+     ```js
+     import 'bootstrap/dist/css/bootstrap.min.css';
+     ```
+
 ## Activity
 
 Work with a partner to resolve the following issue:
@@ -32,9 +34,9 @@ Work with a partner to resolve the following issue:
 
 ## Actual Behavior
 
-* When a user searches for a movie, they find out that they cannot enter any text into the search field. 
+* When a user searches for a movie, they find out that they cannot enter any text into the search field.
 
-* Additionally, the search button doesn't seem to do anything in its current state. 
+* Additionally, the search button doesn't seem to do anything in its current state.
 
 ## 💡 Hints
 

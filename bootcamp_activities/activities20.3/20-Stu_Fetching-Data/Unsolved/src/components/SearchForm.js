@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function SearchForm(props) {
   return (
@@ -15,7 +15,11 @@ function SearchForm(props) {
           id="search"
         />
         <br />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary">
+        <button
+          onClick={props.handleFormSubmit}
+          className="btn btn-primary"
+          type="submit"
+        >
           Search
         </button>
       </div>
