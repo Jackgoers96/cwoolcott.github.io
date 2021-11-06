@@ -21,7 +21,7 @@ function Greeting() {
         <ul>
           {/* TODO: Fix the list below so that each member of your group is accessed from the `group` array */}
           {group.map((student, index) => (
-            <li>{student}</li>
+            <li key={index}>{student}</li>
           ))}
         </ul>
       </div>

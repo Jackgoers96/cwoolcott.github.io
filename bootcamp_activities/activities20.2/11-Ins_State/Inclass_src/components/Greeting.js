@@ -10,9 +10,7 @@ export default function Greeting() {
 
   //const [greeting, setGreeting] = ['Welcome! React state is awesome!', somefunction()];
 
-
-  setGreeting('HELLO! React state is awesome!');
-
+  //setGreeting('HELLO! React state is awesome!');
 
   return (
     <div className="card text-center">
@@ -21,7 +19,8 @@ export default function Greeting() {
       </div>
       <div className="card-body">
         <p className="card-text" style={{ fontSize: '50px' }}>
-          {greeting}
+          {greeting},{favoriteThings[0]},{favoriteThings[2]}<br />
+          {carsILike.model}
         </p>
       </div>
     </div>
