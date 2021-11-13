@@ -1,6 +1,7 @@
 import React from 'react';
 // TODO: Add code here to import necessary functionality
 
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import CommentList from '../components/CommentList';
@@ -10,6 +11,7 @@ import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
 
 const SingleThought = () => {
   // TODO: Add code here to retrieve the query parameter `thoughtId` from the URL
+  const { thoughtId } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
     // Pass the `thoughtId` URL parameter into query to retrieve this thought's data

@@ -1,5 +1,6 @@
 import React from 'react';
 // TODO: Add code to import necessary component for creating internal hyperlinks
+import { Link } from 'react-router-dom';
 
 const ThoughtList = ({ thoughts, title }) => {
   if (!thoughts.length) {
