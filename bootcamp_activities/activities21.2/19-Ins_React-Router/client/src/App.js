@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Profile from './pages/Profile';
@@ -23,6 +23,13 @@ function App() {
             {/* Define routes to render different page components at different paths */}
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/about">
+              <div>
+                THIS IS THE ABOUT PAGE<br />
+                <Link to="/">HOME PAGE</Link>
+
+              </div>
             </Route>
             {/* Define a route that will take in variable data */}
             <Route exact path="/profiles/:profileId">
