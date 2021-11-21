@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Display() {
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
+  let count = 0
 
   // When the state changes run this callback
   useEffect(() => {
@@ -10,11 +11,11 @@ export default function Display() {
   }, [count]);
 
   const handleIncrease = () => {
-    setCount(count + 1);
+    count++;
   };
 
   const handleDecrease = () => {
-    setCount(count - 1);
+    count--
   };
 
   return (
