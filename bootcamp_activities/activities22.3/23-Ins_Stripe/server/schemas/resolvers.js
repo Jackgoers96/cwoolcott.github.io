@@ -57,6 +57,7 @@ const resolvers = {
       const order = new Order({ products: args.products });
       const line_items = [];
 
+      //order is a document, not an object so we have to execute a populate on the doc
       const { products } = await order.populate('products').execPopulate();
 
       for (let i = 0; i < products.length; i++) {

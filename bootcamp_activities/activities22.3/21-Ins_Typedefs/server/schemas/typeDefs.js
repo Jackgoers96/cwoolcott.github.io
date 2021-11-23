@@ -1,5 +1,8 @@
 const { gql } = require('apollo-server-express');
 
+//To make your schema simpler, you can use “input types” for types that use the same input, 
+//by using the input keyword instead of the type keyword.
+
 const typeDefs = gql`
   type Author {
     id: Int!
